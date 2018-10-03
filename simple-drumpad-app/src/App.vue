@@ -25,6 +25,7 @@ export default {
 body {
     background: black;
     font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    opacity: 0;
 }
 
 ul {
