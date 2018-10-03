@@ -45,8 +45,12 @@ export default {
 <style lang="scss" scoped>
 #loops {
     height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    width: 100%;
+    width: 97%;
+    margin-left: 16px;
+    padding: 0px 0px 0px 0px;
 
     div {
         height: 50px;

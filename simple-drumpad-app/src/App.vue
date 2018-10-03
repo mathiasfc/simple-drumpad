@@ -19,6 +19,8 @@ export default {
         Pads
     }
 }
+
+
 </script>
 
 <style lang="scss">

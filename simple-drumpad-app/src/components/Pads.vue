@@ -75,6 +75,7 @@ export default {
         color: #444;
         float: left;
         width: 70%;
+        margin-left: 20px;
 
         .pad {
             background: #252528;
@@ -95,6 +96,7 @@ export default {
         color: #444;
         width: 20%;
         float: right;
+        margin-right: 20px;
 
         .pad {
             background: #252528;
