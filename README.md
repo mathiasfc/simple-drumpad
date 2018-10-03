@@ -10,7 +10,7 @@ Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (co
 
 * Code refactor
 * Implement new features
-* Remove jQuery from original version
+* Remove jQuery from code original version
 
 ## License
 
