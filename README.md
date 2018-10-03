@@ -1,18 +1,18 @@
-# simple-drumpad
+# Simple Drumpad
 
-> A Vue.js project
+> Work in progress...
 
-## Build Setup
+We're building a drumpad application to have fun and at the same time apply the knowledge acquired with the VueJS
 
-``` bash
-# install dependencies
-npm install
+Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze)(codepen)
 
-# serve with hot reload at localhost:8080
-npm run dev
+## TODO
 
-# build for production with minification
-npm run build
-```
+* Code refactor
+* Implement new features
+* Remove jQuery from original version
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
