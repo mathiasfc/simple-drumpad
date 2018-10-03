@@ -2,21 +2,21 @@
 <div id="drumpad" class="container">
     <ConfigPanel />
     <Loops />
-    <RightPads />
+    <Pads />
 </div>
 </template>
 
 <script>
 import ConfigPanel from './components/ConfigPanel.vue'
 import Loops from './components/Loops.vue'
-import RightPads from './components/RightPads.vue'
+import Pads from './components/Pads.vue'
 
 export default {
     name: 'app',
     components: {
         ConfigPanel,
         Loops,
-        RightPads
+        Pads
     }
 }
 </script>
