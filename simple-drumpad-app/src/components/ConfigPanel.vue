@@ -54,5 +54,22 @@ export default {
             /* hide default arrow in chrome OSX */
         }
     }
+
+    .btnControls {
+        float: right;
+        margin-right: 15px;
+        margin-top: 10px;
+        background-color: #5f5f5f;
+        cursor: pointer;
+        border: none;
+        color: white;
+        font-size: 15px;
+        border-radius: 8px;
+        padding: 10px;
+
+        &:focus {
+            outline: 0;
+        }
+    }
 }
 </style>
