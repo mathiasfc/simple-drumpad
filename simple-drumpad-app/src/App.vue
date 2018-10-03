@@ -19,13 +19,12 @@ export default {
         Pads
     }
 }
-
-
 </script>
 
 <style lang="scss">
 body {
     background: black;
+    opacity: 1;
     font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
