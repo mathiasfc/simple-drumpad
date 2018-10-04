@@ -1,42 +1,63 @@
 <template>
 <div id="loops">
-    <div class="loop-empty" data-key="49">
-        Empty loop
+    <div class="loop-empty" v-for="loop in loops" @click="testFunction(loop.key)">
+        {{defaultMessage}}
     </div>
-    <div class="loop-empty" data-key="50">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="51">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="52">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="53">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="54">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="55">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="56">
-        Empty loop
-    </div>
-    <div class="loop-empty" data-key="57">
-        Empty loop
-    </div>
+
+    <!--
     <div class="loop-empty" data-key="48">
         Empty loop
     </div>
+    -->
 </div>
 </template>
 
 <script>
 export default {
     name: 'Loops',
-    props: {}
+    data() {
+        return {
+            defaultMessage: 'Empty loop',
+            loops: [{
+                    key: 49
+                },
+                {
+                    key: 50
+                },
+                {
+                    key: 51
+                },
+                {
+                    key: 52
+                },
+                {
+                    key: 53
+                },
+                {
+                    key: 54
+                },
+                {
+                    key: 55
+                },
+                {
+                    key: 56
+                },
+                {
+                    key: 57
+                },
+                {
+                    key: 48
+                }
+            ]
+        }
+    },
+
+    methods: {
+        testFunction(x) {
+            alert(x);
+        }
+    }
+
 }
 </script>
 

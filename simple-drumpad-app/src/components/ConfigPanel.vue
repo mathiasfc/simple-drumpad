@@ -2,9 +2,9 @@
 <div id="config-panel">
     <span class="custom-dropdown">
      <select>    
-            <option>Hip Hop</option>
-            <option>Jazz</option>  
-            <option>Reaggeton</option>
+        <option v-for="opt in options">
+            {{opt}}
+        </option>
      </select> 
      </span>
     <input type="button" class="btnControls" value="ⓘ Controls" id="btnControls" />
@@ -14,7 +14,11 @@
 <script>
 export default {
     name: 'ConfigPanel',
-    props: {}
+    data() {
+        return {
+            options: ['Hip Hop', 'Jazz', 'Reaggeton']
+        }
+    }
 }
 </script>
 
