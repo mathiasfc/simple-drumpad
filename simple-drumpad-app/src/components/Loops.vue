@@ -1,6 +1,6 @@
 <template>
 <div id="loops">
-    <div class="loop-empty" v-for="loop in loops" @click="testFunction(loop.key)">
+    <div class="loop-empty" v-for="loop in loops" :data-key="loop.key" @click="testFunction(loop.key)">
         {{defaultMessage}}
     </div>
 

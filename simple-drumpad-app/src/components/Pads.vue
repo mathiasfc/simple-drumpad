@@ -1,54 +1,13 @@
 <template>
 <div id="pads">
     <div class="wrapper-left">
-        <!-- first-->
-        <div class="pad ripple" data-key="81" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="87" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="69" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="82" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="84" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="89" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="85" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="73" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="79" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="80" data-ripple-color="blue"> </div>
-
-        <!-- second-->
-        <div class="pad ripple" data-key="65" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="83" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="68" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="70" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="71" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="72" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="74" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="75" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="76" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="186" data-ripple-color="blue"> </div>
-
-        <!-- third-->
-        <div class="pad ripple" data-key="90" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="88" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="67" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="86" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="66" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="78" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="77" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="188" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="190" data-ripple-color="blue"> </div>
-        <div class="pad ripple" data-key="191" data-ripple-color="blue"> </div>
-
+        <div class="pad ripple" v-for="key in firstline" :data-key="key" data-ripple-color="blue"></div>
+        <div class="pad ripple" v-for="key in secondLine" :data-key="key" data-ripple-color="blue"></div>
+        <div class="pad ripple" v-for="key in thirdLine" :data-key="key" data-ripple-color="blue"></div>
     </div>
 
     <div class="wrapper-right">
-        <div class="pad" loop="true" data-key="103"> </div>
-        <div class="pad" loop="true" data-key="104"> </div>
-        <div class="pad" loop="true" data-key="105"> </div>
-        <div class="pad" loop="true" data-key="100"> </div>
-        <div class="pad" loop="true" data-key="101"> </div>
-        <div class="pad" loop="true" data-key="102"> </div>
-        <div class="pad" loop="true" data-key="97"> </div>
-        <div class="pad" loop="true" data-key="98"> </div>
-        <div class="pad" loop="true" data-key="99"> </div>
+        <div class="pad" v-for="key in rightPads" :data-key="key"></div>
     </div>
 </div>
 </template>
@@ -56,7 +15,14 @@
 <script>
 export default {
     name: 'Pads',
-    props: {}
+    data() {
+        return {
+            firstline: [82, 87, 69, 82, 84, 89, 85, 73, 79, 80],
+            secondLine: [65, 83, 68, 70, 71, 72, 74, 75, 76, 186],
+            thirdLine: [90, 88, 67, 86, 66, 78, 77, 188, 190, 191],
+            rightPads: [103, 104, 105, 100, 101, 102, 97, 98, 99]
+        }
+    }
 }
 </script>
 
