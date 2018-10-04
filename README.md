@@ -1,6 +1,6 @@
 # Simple Drumpad
 
-![Gif](https://raw.githubusercontent.com/mathiasfc/simple-drumpad/master/simple-drumpad-app/src/assets/aniimated.gif)
+![Gif](https://github.com/mathiasfc/simple-drumpad/blob/master/simple-drumpad-app/src/assets/animated.gif?raw=true)
 
 > Work in progress...
 
