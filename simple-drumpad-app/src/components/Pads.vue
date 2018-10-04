@@ -1,9 +1,9 @@
 <template>
 <div id="pads">
     <div class="wrapper-left">
-        <div class="pad ripple" v-for="key in firstline" :data-key="key" data-ripple-color="blue"></div>
-        <div class="pad ripple" v-for="key in secondLine" :data-key="key" data-ripple-color="blue"></div>
-        <div class="pad ripple" v-for="key in thirdLine" :data-key="key" data-ripple-color="blue"></div>
+        <div class="pad" v-for="key in firstline" :data-key="key"></div>
+        <div class="pad" v-for="key in secondLine" :data-key="key"></div>
+        <div class="pad" v-for="key in thirdLine" :data-key="key"></div>
     </div>
 
     <div class="wrapper-right">

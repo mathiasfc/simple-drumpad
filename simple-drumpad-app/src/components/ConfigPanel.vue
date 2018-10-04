@@ -7,16 +7,25 @@
         </option>
      </select> 
      </span>
-    <input type="button" class="btnControls" value="ⓘ Controls" id="btnControls" />
+    <input type="button" class="btnControls" value="ⓘ Controls" id="btnControls" @click="toggleInfos" />
 </div>
 </template>
 
 <script>
+import {
+    Bus
+} from '../main.js';
+
 export default {
     name: 'ConfigPanel',
     data() {
         return {
-            options: ['Hip Hop', 'Jazz', 'Reaggeton']
+            options: ['Hip Hop', 'Jazz', 'Reaggeton'],
+        }
+    },
+    methods: {
+        toggleInfos() {
+            Bus.$emit('toggleInfos', true);
         }
     }
 }

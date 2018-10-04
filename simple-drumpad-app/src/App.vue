@@ -3,6 +3,8 @@
     <ConfigPanel />
     <Loops />
     <Pads />
+    <ControlsInfo />
+    <Audios />
 </div>
 </template>
 
@@ -10,13 +12,17 @@
 import ConfigPanel from './components/ConfigPanel.vue'
 import Loops from './components/Loops.vue'
 import Pads from './components/Pads.vue'
+import ControlsInfo from './components/ControlsInfo.vue'
+import Audios from './components/Audios.vue'
 
 export default {
     name: 'app',
     components: {
         ConfigPanel,
         Loops,
-        Pads
+        Pads,
+        ControlsInfo,
+        Audios
     }
 }
 
