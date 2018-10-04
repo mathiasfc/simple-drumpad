@@ -1,9 +1,9 @@
 <template>
 <div id="pads">
     <div class="wrapper-left">
-        <div class="pad" v-for="key in firstline" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
-        <div class="pad" v-for="key in secondLine" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
-        <div class="pad" v-for="key in thirdLine" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
+        <div class="pad" v-for="key in firstline" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+        <div class="pad" v-for="key in secondLine" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+        <div class="pad" v-for="key in thirdLine" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
     </div>
 
     <div class="wrapper-right">
@@ -18,34 +18,51 @@ export default {
     data() {
         return {
             isPressed: false,
-            pressedKey: null,
-            firstline: [82, 87, 69, 82, 84, 89, 85, 73, 79, 80],
+            pressedKeys: [],
+            firstline: [81, 87, 69, 82, 84, 89, 85, 73, 79, 80],
             secondLine: [65, 83, 68, 70, 71, 72, 74, 75, 76, 186],
             thirdLine: [90, 88, 67, 86, 66, 78, 77, 188, 190, 191],
             rightPads: [103, 104, 105, 100, 101, 102, 97, 98, 99]
         }
     },
     created() {
-        window.addEventListener('keydown', this.keyDown)
+        window.addEventListener('keydown', this.keyDown);
+        window.addEventListener('keyup', this.keyUp);
     },
     methods: {
         keyDown(e) {
             if (this.isLoopKey(e)) {
                 console.log('Loop clicked');
+                this.loopClick(e);
             } else if (this.isNormalKey(e)) {
                 console.log('Pad clicked');
+                this.padClick(e);
+            }
+        },
+        keyUp(e) {
+            var index = this.pressedKeys.indexOf(e.keyCode);
+            if (index > -1) {
+                this.pressedKeys.splice(index, 1);
             }
         },
         pressCheck(key) {
-            console.log("work");
+            /*console.log("work");
             this.isPressed = !this.isPressed;
-            this.pressedKey = key;
+            this.pressedKey = key;*/
         },
         isLoopKey(e) {
             return (e.keyCode >= 48 && e.keyCode <= 57);
         },
         isNormalKey(e) {
             return (this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode));
+        },
+        loopClick(e) {
+
+        },
+        padClick(e) {
+            if (!this.pressedKeys.includes(e.keyCode)) {
+                this.pressedKeys.push(e.keyCode);
+            }
         }
     }
 }
