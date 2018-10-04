@@ -4,6 +4,8 @@
 
 > Work in progress...
 
+> Using Vue.js
+
 We're building a drumpad application to have fun and at the same time apply the knowledge acquired with the VueJS.
 
 Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (codepen).

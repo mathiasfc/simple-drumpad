@@ -17,7 +17,6 @@ export default {
     name: 'Pads',
     data() {
         return {
-            isPressed: false,
             pressedKeys: [],
             firstline: [81, 87, 69, 82, 84, 89, 85, 73, 79, 80],
             secondLine: [65, 83, 68, 70, 71, 72, 74, 75, 76, 186],
@@ -40,15 +39,10 @@ export default {
             }
         },
         keyUp(e) {
-            var index = this.pressedKeys.indexOf(e.keyCode);
-            if (index > -1) {
-                this.pressedKeys.splice(index, 1);
+            var idx = this.pressedKeys.indexOf(e.keyCode);
+            if (idx > -1) {
+                this.pressedKeys.splice(idx, 1);
             }
-        },
-        pressCheck(key) {
-            /*console.log("work");
-            this.isPressed = !this.isPressed;
-            this.pressedKey = key;*/
         },
         isLoopKey(e) {
             return (e.keyCode >= 48 && e.keyCode <= 57);

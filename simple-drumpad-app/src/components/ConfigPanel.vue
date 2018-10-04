@@ -1,7 +1,7 @@
 <template>
 <div id="config-panel">
     <span class="custom-dropdown">
-     <select>    
+     <select @change="onSelectChange" v-model="selected">    
         <option v-for="(opt, index) in options" :key="index">
             {{opt}}
         </option>
@@ -20,12 +20,16 @@ export default {
     name: 'ConfigPanel',
     data() {
         return {
+            selected: "Hip Hop",
             options: ['Hip Hop', 'Jazz', 'Reaggeton'],
         }
     },
     methods: {
         toggleInfos() {
             Bus.$emit('toggleInfos', true);
+        },
+        onSelectChange(){
+            console.log(this.key);
         }
     }
 }
