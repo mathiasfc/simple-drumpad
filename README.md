@@ -1,6 +1,6 @@
 # Simple Drumpad
 
-![Screenshot](.\simple-drumpad-app\src\assets\layout.png)
+![Screenshot](https://raw.githubusercontent.com/mathiasfc/simple-drumpad/master/simple-drumpad-app/src/assets/layout.png)
 
 > Work in progress...
 
