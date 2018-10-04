@@ -10,9 +10,9 @@ Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (co
 
 * Code refactor
 * Implement new features
-* Remove jQuery from code original version
+* Remove jQuery from code
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+[MIT](LICENSE.md)
 
