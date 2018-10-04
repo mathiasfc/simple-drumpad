@@ -1,9 +1,9 @@
 <template>
 <div id="pads">
     <div class="wrapper-left">
-        <div class="pad" v-for="key in firstline" :data-key="key"></div>
-        <div class="pad" v-for="key in secondLine" :data-key="key"></div>
-        <div class="pad" v-for="key in thirdLine" :data-key="key"></div>
+        <div class="pad" v-for="key in firstline" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
+        <div class="pad" v-for="key in secondLine" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
+        <div class="pad" v-for="key in thirdLine" :data-key="key" @click="pressCheck(key)" v-bind:class="{playing: isPressed && pressedKey == key}"></div>
     </div>
 
     <div class="wrapper-right">
@@ -17,10 +17,35 @@ export default {
     name: 'Pads',
     data() {
         return {
+            isPressed: false,
+            pressedKey: null,
             firstline: [82, 87, 69, 82, 84, 89, 85, 73, 79, 80],
             secondLine: [65, 83, 68, 70, 71, 72, 74, 75, 76, 186],
             thirdLine: [90, 88, 67, 86, 66, 78, 77, 188, 190, 191],
             rightPads: [103, 104, 105, 100, 101, 102, 97, 98, 99]
+        }
+    },
+    created() {
+        window.addEventListener('keydown', this.keyDown)
+    },
+    methods: {
+        keyDown(e) {
+            if (this.isLoopKey(e)) {
+                console.log('Loop clicked');
+            } else if (this.isNormalKey(e)) {
+                console.log('Pad clicked');
+            }
+        },
+        pressCheck(key) {
+            console.log("work");
+            this.isPressed = !this.isPressed;
+            this.pressedKey = key;
+        },
+        isLoopKey(e) {
+            return (e.keyCode >= 48 && e.keyCode <= 57);
+        },
+        isNormalKey(e) {
+            return (this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode));
         }
     }
 }
@@ -74,6 +99,13 @@ export default {
             outline: none;
             cursor: pointer;
         }
+    }
+
+    .playing {
+        background: #4a99dc !important;
+        outline: none !important;
+        border-color: #2773e4 !important;
+        box-shadow: 0 0 20px #2773e4 !important;
     }
 }
 </style>
