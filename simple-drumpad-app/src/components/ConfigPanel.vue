@@ -2,7 +2,7 @@
 <div id="config-panel">
     <span class="custom-dropdown">
      <select>    
-        <option v-for="opt in options">
+        <option v-for="(opt, index) in options" :key="index">
             {{opt}}
         </option>
      </select> 
