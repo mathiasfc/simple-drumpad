@@ -1,5 +1,7 @@
 # Simple Drumpad
 
+![Screenshot](.\simple-drumpad-app\src\assets\layout.png)
+
 > Work in progress...
 
 We're building a drumpad application to have fun and at the same time apply the knowledge acquired with the VueJS.
