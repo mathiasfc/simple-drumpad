@@ -17,6 +17,9 @@
 
 ## TODO
 
+* Display
+* Loop recording
+* Loop sync
 * Code refactor
 * Implement new features
 * Remove jQuery from code
