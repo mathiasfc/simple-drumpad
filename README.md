@@ -13,7 +13,7 @@
 
 🎹 Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (codepen).
 
-🍻 Feel free to modify/contribute the way you want
+🍻 Feel free to contribute whatsoever
 
 ## TODO
 
@@ -22,7 +22,6 @@
 * Loop sync
 * Code refactor
 * Implement new features
-* Remove jQuery from code
 
 ## License
 

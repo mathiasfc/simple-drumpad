@@ -13,6 +13,10 @@
 </template>
 
 <script>
+import {
+    Bus
+} from '../main.js';
+
 export default {
     name: 'Pads',
     data() {
@@ -35,6 +39,7 @@ export default {
                 this.loopClick(e);
             } else if (this.isNormalKey(e)) {
                 console.log('Pad clicked');
+                this.playAudio(e);
                 this.padClick(e);
             }
         },
@@ -57,7 +62,10 @@ export default {
             if (!this.pressedKeys.includes(e.keyCode)) {
                 this.pressedKeys.push(e.keyCode);
             }
-        }
+        },
+        playAudio(e) {
+            Bus.$emit('playAudio', e);
+        },
     }
 }
 </script>
