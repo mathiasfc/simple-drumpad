@@ -13,7 +13,7 @@
 
 🎹 Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (codepen).
 
-🍻 Feel free to contribute whatsoever
+🍻 Feel free to contribute whatsoever.
 
 ## TODO
 
