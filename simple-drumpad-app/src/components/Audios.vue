@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Bus } from '../main.js'
+import { Bus } from '../main.js';
 
 export default {
   name: 'Audios',
@@ -31,26 +31,26 @@ export default {
           src: 'http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav'
         }
       ]
-    }
+    };
   },
   created() {
     Bus.$on('playAudio', keydown => {
-      this.playSoundKey(keydown.keyCode)
-    })
+      this.playSoundKey(keydown.keyCode);
+    });
   },
   methods: {
     playSoundKey(key) {
       let audio = this.audios.find(obj => {
-        return obj.key === key
-      })
+        return obj.key === key;
+      });
       if (audio) {
-        let sound = document.createElement('audio')
-        sound.src = audio.src
-        sound.play()
+        let sound = document.createElement('audio');
+        sound.src = audio.src;
+        sound.play();
       }
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

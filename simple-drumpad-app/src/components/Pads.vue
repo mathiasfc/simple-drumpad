@@ -7,13 +7,13 @@
   </div>
 
   <div class="wrapper-right">
-    <div class="pad" v-for="key in rightPads" :data-key="key"></div>
+    <div class="pad" v-for="key in rightPads" :key="key" :data-key="key"></div>
   </div>
 </div>
 </template>
 
 <script>
-import { Bus } from '../main.js'
+import { Bus } from '../main.js';
 
 export default {
   name: 'Pads',
@@ -24,48 +24,46 @@ export default {
       secondLine: [65, 83, 68, 70, 71, 72, 74, 75, 76, 186],
       thirdLine: [90, 88, 67, 86, 66, 78, 77, 188, 190, 191],
       rightPads: [103, 104, 105, 100, 101, 102, 97, 98, 99]
-    }
+    };
   },
   created() {
-    window.addEventListener('keydown', this.keyDown)
-    window.addEventListener('keyup', this.keyUp)
+    window.addEventListener('keydown', this.keyDown);
+    window.addEventListener('keyup', this.keyUp);
   },
   methods: {
     keyDown(e) {
       if (this.isLoopKey(e)) {
-        console.log('Loop clicked')
-        this.loopClick(e)
+        console.log('Loop clicked');
+        this.loopClick(e);
       } else if (this.isNormalKey(e)) {
-        console.log('Pad clicked')
-        this.playAudio(e)
-        this.padClick(e)
+        console.log('Pad clicked');
+        this.playAudio(e);
+        this.padClick(e);
       }
     },
     keyUp(e) {
-      var idx = this.pressedKeys.indexOf(e.keyCode)
+      var idx = this.pressedKeys.indexOf(e.keyCode);
       if (idx > -1) {
-        this.pressedKeys.splice(idx, 1)
+        this.pressedKeys.splice(idx, 1);
       }
     },
     isLoopKey(e) {
-      return e.keyCode >= 48 && e.keyCode <= 57
+      return e.keyCode >= 48 && e.keyCode <= 57;
     },
     isNormalKey(e) {
-      return (
-        this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode)
-      )
+      return this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode);
     },
     loopClick(e) {},
     padClick(e) {
       if (!this.pressedKeys.includes(e.keyCode)) {
-        this.pressedKeys.push(e.keyCode)
+        this.pressedKeys.push(e.keyCode);
       }
     },
     playAudio(e) {
-      Bus.$emit('playAudio', e)
+      Bus.$emit('playAudio', e);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

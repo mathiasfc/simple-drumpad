@@ -14,26 +14,26 @@
 </template>
 
 <script>
-import { Bus } from '../main.js'
+import { Bus } from '../main.js';
 
 export default {
   name: 'ControlsInfo',
   data() {
     return {
       showDetails: false
-    }
+    };
   },
   created() {
     Bus.$on('toggleInfos', showDetails => {
-      this.showDetails = showDetails
-    })
+      this.showDetails = showDetails;
+    });
   },
   methods: {
     toggleInfo() {
-      this.showDetails = !this.showDetails
+      this.showDetails = !this.showDetails;
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

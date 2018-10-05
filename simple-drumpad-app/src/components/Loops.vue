@@ -3,13 +3,7 @@
     <div class="loop-empty" v-for="loop in loops" :data-key="loop.key" :key="loop.key" @click="testFunction(loop.key)">
         {{defaultMessage}}
     </div>
-
-    <!--
-    <div class="loop-empty" data-key="48">
-        Empty loop
-    </div>
-    -->
-  </div>
+</div>
 </template>
 
 <script>
@@ -50,15 +44,15 @@ export default {
           key: 48
         }
       ]
-    }
+    };
   },
 
   methods: {
     testFunction(x) {
-      alert(x)
+      alert(x);
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
