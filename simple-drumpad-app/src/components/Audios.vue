@@ -1,13 +1,13 @@
 <template>
 <div id="audios">
 
-    <audio loop id="Kick" data-key="71">
+    <!--<audio loop id="Kick" data-key="71">
         <source src="http://hpanagramizer.freeoda.com/beats/HipHop/Claps/C - RnB.wav"/>
     </audio>
 
     <audio loop id="DjNoise" data-key="72">
         <source src="http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav" />
-    </audio>
+    </audio>-->
 
 </div>
 </template>
