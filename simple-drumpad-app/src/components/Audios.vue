@@ -9,6 +9,8 @@
         <source src="http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav" />
     </audio>-->
 
+    <!-- trying audio preload 
+    <audio ref="audio" :src="audios[0].src" preload="auto"></audio>-->
 </div>
 </template>
 
@@ -33,6 +35,7 @@ export default {
       ]
     };
   },
+  mounted() {},
   created() {
     Bus.$on('playAudio', keydown => {
       this.playSoundKey(keydown.keyCode);
@@ -52,8 +55,6 @@ export default {
   }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
 #audios {

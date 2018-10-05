@@ -1,13 +1,13 @@
 <template>
 <div id="pads">
     <div class="wrapper-left">
-        <div class="pad" v-for="key in firstline" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
-        <div class="pad" v-for="key in secondLine" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
-        <div class="pad" v-for="key in thirdLine" :data-key="key" @click="" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+        <div class="pad" v-bind:key="key" v-for="key in firstline" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+        <div class="pad" v-bind:key="key" v-for="key in secondLine" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+        <div class="pad" v-bind:key="key"  v-for="key in thirdLine" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
     </div>
 
     <div class="wrapper-right">
-        <div class="pad" v-for="key in rightPads" :data-key="key"></div>
+        <div class="pad" v-bind:key="key"  v-for="key in rightPads" :data-key="key"></div>
     </div>
 </div>
 </template>
