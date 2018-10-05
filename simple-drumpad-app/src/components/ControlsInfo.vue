@@ -14,60 +14,58 @@
 </template>
 
 <script>
-import {
-    Bus
-} from '../main.js';
+import { Bus } from '../main.js';
 
 export default {
-    name: 'ControlsInfo',
-    data() {
-        return {
-            showDetails: false
-        }
-    },
-    created() {
-        Bus.$on('toggleInfos', (showDetails) => {
-            this.showDetails = showDetails;
-        });
-    },
-    methods: {
-        toggleInfo() {
-            this.showDetails = !this.showDetails;
-        }
+  name: 'ControlsInfo',
+  data() {
+    return {
+      showDetails: false
+    };
+  },
+  created() {
+    Bus.$on('toggleInfos', showDetails => {
+      this.showDetails = showDetails;
+    });
+  },
+  methods: {
+    toggleInfo() {
+      this.showDetails = !this.showDetails;
     }
-}
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
 .messagepop {
-    position: fixed;
-    top: 45%;
-    left: 50%;
-    width: 30em;
-    height: 20em;
-    margin-top: -9em;
-    margin-left: -15em;
-    border: 1px solid #ccc;
-    background-color: #f3f3f3;
-    padding: 15px;
-    background: #1b1b1b;
-    opacity: 0.9;
-    color: white;
-    z-index: 2;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  width: 30em;
+  height: 20em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+  padding: 15px;
+  background: #1b1b1b;
+  opacity: 0.9;
+  color: white;
+  z-index: 2;
 }
 
 .backgroundDiv {
-    position: fixed;
-    padding: 0;
-    margin: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.4;
-    background: black;
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background: black;
 }
 </style>
