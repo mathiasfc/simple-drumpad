@@ -52,9 +52,8 @@ export default {
         var objAudio = {
           audio: audio,
           key: element.key
-        };
-        // once this file loads, it will call loadedAudio()
-        // the file will be kept by the browser as cache
+        }; 
+        //when loadedAudio() fires the file will be kept by the browser as cache
         audio.src = element.src;
         audio.addEventListener("canplaythrough", this.loadedAudio(objAudio), false);
       });
