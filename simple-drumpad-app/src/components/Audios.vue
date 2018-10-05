@@ -32,10 +32,13 @@ export default {
           name: 'clap',
           src: 'http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav'
         }
-      ]
+      ],
+      preloadedSounds: []
     };
   },
-  mounted() {},
+  mounted() {
+    this.preLoadSounds();
+  },
   created() {
     Bus.$on('playAudio', keydown => {
       this.playSoundKey(keydown.keyCode);
@@ -51,6 +54,31 @@ export default {
         sound.src = audio.src;
         sound.play();
       }
+
+      /*let soundObj = this.preloadedSounds.find(sound => {
+        return sound.key === key;
+      });
+
+      if (soundObj) {
+        console.log(soundObj);
+        soundObj.sound.play();
+      }*/
+    },
+    preLoadSounds() {
+      /*this.audios.forEach(audio => {
+        let sound = document.createElement('audio');
+        sound.id = audio.key;
+        sound.src = audio.src;
+        //let isAppLoaded = true;
+        //sound.addEventListener('canplaythrough', isAppLoaded, false);
+        sound.load();
+        var soundObj = {
+          key: audio.key,
+          sound: sound
+        };
+        console.warn(soundObj);
+        this.preloadedSounds.push(soundObj);
+      });*/
     }
   }
 };
