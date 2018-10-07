@@ -62,6 +62,7 @@ export default {
       right: 1.2em;
       top: 50%;
       margin-top: -0.5em;
+      color: rgba(0, 0, 0, 0.4);
     }
 
     &:before {
@@ -70,6 +71,7 @@ export default {
       top: 0;
       bottom: 0;
       border-radius: 0 3px 3px 0;
+      background-color: rgba(0, 0, 0, 0.15);
     }
 
     select[disabled] {
@@ -78,14 +80,6 @@ export default {
 
     select[disabled]::after {
       color: rgba(0, 0, 0, 0.1);
-    }
-
-    &:before {
-      background-color: rgba(0, 0, 0, 0.15);
-    }
-
-    &:after {
-      color: rgba(0, 0, 0, 0.4);
     }
 
     select {
