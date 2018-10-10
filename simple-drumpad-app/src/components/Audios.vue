@@ -1,16 +1,6 @@
 <template>
 <div id="audios">
 
-    <!--<audio loop id="Kick" data-key="71">
-        <source src="http://hpanagramizer.freeoda.com/beats/HipHop/Claps/C - RnB.wav"/>
-    </audio>
-
-    <audio loop id="DjNoise" data-key="72">
-        <source src="http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav" />
-    </audio>-->
-
-    <!-- trying audio preload 
-    <audio ref="audio" :src="audios[0].src" preload="auto"></audio>-->
 </div>
 </template>
 
@@ -48,7 +38,7 @@ export default {
 
     Bus.$on('playAudio', keydown => {
       this.playSoundKey(keydown.keyCode);
-      console.warn(this.selectedGenre);
+      console.log(this.selectedGenre);
     });
   },
   methods: {
