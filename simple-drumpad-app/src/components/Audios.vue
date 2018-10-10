@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 <div id="audios">
 
     <!--<audio loop id="Kick" data-key="71">
@@ -12,25 +13,31 @@
     <!-- trying audio preload 
     <audio ref="audio" :src="audios[0].src" preload="auto"></audio>-->
 </div>
+=======
+  <div id="audios">
+  </div>
+>>>>>>> 612405813a01546c2b5ac383159e5bc6fd66d2ac
 </template>
 
 <script>
-import { Bus } from '../main.js';
+import { Bus } from "../main.js";
 
 export default {
-  name: 'Audios',
+  name: "Audios",
   data() {
     return {
+      audiosLoaded: [],
+      audiosReady: false,
       audios: [
         {
           key: 71,
-          name: 'snare',
-          src: 'http://hpanagramizer.freeoda.com/beats/HipHop/Claps/C - RnB.wav'
+          name: "snare",
+          src: "http://hpanagramizer.freeoda.com/beats/HipHop/Claps/C - RnB.wav"
         },
         {
           key: 72,
-          name: 'clap',
-          src: 'http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav'
+          name: "clap",
+          src: "http://hpanagramizer.freeoda.com/beats/HipHop/Kick/K - Hot.wav"
         }
       ],
       preloadedSounds: []
@@ -40,19 +47,42 @@ export default {
     this.preLoadSounds();
   },
   created() {
-    Bus.$on('playAudio', keydown => {
+    this.preLoadAudios();
+
+    Bus.$on("playAudio", keydown => {
       this.playSoundKey(keydown.keyCode);
     });
   },
   methods: {
     playSoundKey(key) {
-      let audio = this.audios.find(obj => {
-        return obj.key === key;
+      if (this.audiosReady) {
+        let audio = this.audios.find(obj => {
+          return obj.key === key;
+        });
+        if (audio) {
+          let sound = document.createElement("audio");
+          sound.src = audio.src;
+          sound.play();
+        }
+      }
+    },
+    preLoadAudios() {
+      this.audios.forEach(element => {
+        var audio = new Audio();
+        var objAudio = {
+          audio: audio,
+          key: element.key
+        }; 
+        //when loadedAudio() fires the file will be kept by the browser as cache
+        audio.src = element.src;
+        audio.addEventListener("canplaythrough", this.loadedAudio(objAudio), false);
       });
-      if (audio) {
-        let sound = document.createElement('audio');
-        sound.src = audio.src;
-        sound.play();
+    },
+    loadedAudio(objAudio) {
+      this.audiosLoaded.push(objAudio);
+      if (this.audiosLoaded.length == this.audios.length) {
+        this.audiosReady = true;
+        console.warn("All audios loaded");
       }
 
       /*let soundObj = this.preloadedSounds.find(sound => {

@@ -1,11 +1,11 @@
 <template>
-<div id="drumpad" class="container">
+  <div id="drumpad" class="container">
     <ConfigPanel />
     <Loops />
     <Pads />
     <ControlsInfo />
     <Audios />
-</div>
+  </div>
 </template>
 
 <script>
