@@ -1,6 +1,5 @@
 <template>
 <div id="pads">
-<<<<<<< HEAD
     <div class="wrapper-left">
         <div class="pad" v-bind:key="key" v-for="key in firstline" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
         <div class="pad" v-bind:key="key" v-for="key in secondLine" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
@@ -10,17 +9,6 @@
     <div class="wrapper-right">
         <div class="pad" v-bind:key="key"  v-for="key in rightPads" :data-key="key"></div>
     </div>
-=======
-  <div class="wrapper-left">
-    <div class="pad" v-for="key in firstline" :key="key" :data-key="key" :class="{playing: pressedKeys.includes(key)}"></div>
-    <div class="pad" v-for="key in secondLine" :key="key" :data-key="key" :class="{playing: pressedKeys.includes(key)}"></div>
-    <div class="pad" v-for="key in thirdLine" :key="key" :data-key="key" :class="{playing: pressedKeys.includes(key)}"></div>
-  </div>
-
-  <div class="wrapper-right">
-    <div class="pad" v-for="key in rightPads" :key="key" :data-key="key"></div>
-  </div>
->>>>>>> 612405813a01546c2b5ac383159e5bc6fd66d2ac
 </div>
 </template>
 
