@@ -1,5 +1,5 @@
 <template>
-<div v-if="showDetails">
+<div v-if="howToUse">
   <div class="backgroundDiv" @click="toggleInfo"></div>
   <div class="messagepop pop">
     <h1 style="text-align:center;">Keyboard</h1><br>
@@ -20,17 +20,17 @@ export default {
   name: 'ControlsInfo',
   data() {
     return {
-      showDetails: false
+      howToUse: false
     };
   },
   created() {
-    Bus.$on('toggleInfos', showDetails => {
-      this.showDetails = showDetails;
+    Bus.$on('toggleInfos', howToUse => {
+      this.howToUse = howToUse;
     });
   },
   methods: {
     toggleInfo() {
-      this.showDetails = !this.showDetails;
+      this.howToUse = !this.howToUse;
     }
   }
 };
