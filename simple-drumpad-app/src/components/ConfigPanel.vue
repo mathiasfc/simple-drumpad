@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       selected: 'Hip Hop',
-      options: ['Hip Hop', 'Jazz', 'Reaggeton']
+      options: ['Hip Hop', 'Jazz']
     };
   },
   methods: {
@@ -27,7 +27,7 @@ export default {
       Bus.$emit('toggleInfos', true);
     },
     onSelectChange() {
-      console.log(this.key);
+      Bus.$emit('genreChanged', this.selected);
     }
   }
 };
