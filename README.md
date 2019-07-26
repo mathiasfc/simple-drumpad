@@ -1,9 +1,8 @@
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/mathiasfc/simple-drumpad)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/mathiasfc/simple-drumpad)
 
 # Simple Drumpad
 
-![Gif](https://github.com/mathiasfc/simple-drumpad/blob/master/simple-drumpad-app/src/assets/animated.gif?raw=true)
+![Gif](https://github.com/mathiasfc/blob/master/simple-drumpad-app/src/assets/animated.gif?raw=true)
 
 > Work in progress...
 
@@ -14,6 +13,20 @@
 🎹 Creating based on a first [version](https://codepen.io/mathiasfc/pen/eRQRze) (codepen).
 
 🍻 Feel free to contribute whatsoever.
+
+## How to Install
+
+* Clone this repo and run
+
+```
+  npm install
+```
+# How to Use
+
+
+```
+  npm run serve
+```
 
 ## TODO
 
