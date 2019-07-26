@@ -4,6 +4,8 @@
 
 ![Gif](https://github.com/mathiasfc/simple-drumpad/blob/master/src/assets/animated.gif?raw=true)
 
+🎹 [drumpad](https://mathiasfc.github.io/simple-drumpad/).
+
 > Work in progress...
 
 > Vue 3.0.4 
