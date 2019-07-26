@@ -2,7 +2,7 @@
 
 # Simple Drumpad
 
-![Gif](https://github.com/mathiasfc/blob/master/simple-drumpad/src/assets/animated.gif?raw=true)
+![Gif](https://github.com/mathiasfc/blob/master/src/assets/animated.gif?raw=true)
 
 > Work in progress...
 
