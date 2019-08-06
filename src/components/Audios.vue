@@ -11,7 +11,9 @@ export default {
   data() {
     return {
       selectedGenre: "hiphop",
-      audioItems: audios
+      audioItems: audios,
+      topKeys: [69, 73, 79, 80, 81, 82, 84, 85, 87, 89],
+      midKeys: [65, 68, 70, 71, 72, 74, 75, 76, 83, 186]
     };
   },
   mounted() {
@@ -38,7 +40,13 @@ export default {
   },
   methods: {
     playSoundKey(key) {
-      var audio = require(`../assets/audios/hiphop/${key}.wav`);
+      let path;
+      if (this.topKeys.includes(key)) {
+        path = "top";
+      } else if (this.midKeys.includes(key)) {
+        path = "mid";
+      }
+      var audio = require(`../assets/audios/hiphop/${path}/${key}.wav`);
       var sound = new Audio(audio);
       if (sound) {
         sound.play();
