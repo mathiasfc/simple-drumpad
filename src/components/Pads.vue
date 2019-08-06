@@ -51,7 +51,7 @@ export default {
       return e.keyCode >= 48 && e.keyCode <= 57;
     },
     isNormalKey(e) {
-      return this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode);
+      return this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode) || this.rightPads.includes(e.keyCode);
     },
     loopClick(e) {},
     padClick(e) {
