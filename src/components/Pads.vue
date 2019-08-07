@@ -1,22 +1,44 @@
 <template>
-<div id="pads">
+  <div id="pads">
     <div class="wrapper-left">
-        <div class="pad" v-bind:key="key" v-for="key in firstline" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
-        <div class="pad" v-bind:key="key" v-for="key in secondLine" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
-        <div class="pad" v-bind:key="key"  v-for="key in thirdLine" :data-key="key" v-bind:class="{playing: pressedKeys.includes(key)}"></div>
+      <div
+        class="pad"
+        v-bind:key="key"
+        v-for="key in firstline"
+        :data-key="key"
+        v-bind:class="{playing: pressedKeys.includes(key)}"
+      ></div>
+      <div
+        class="pad"
+        v-bind:key="key"
+        v-for="key in secondLine"
+        :data-key="key"
+        v-bind:class="{playing: pressedKeys.includes(key)}"
+      ></div>
+      <div
+        class="pad"
+        v-bind:key="key"
+        v-for="key in thirdLine"
+        :data-key="key"
+        v-bind:class="{playing: pressedKeys.includes(key)}"
+      ></div>
     </div>
 
     <div class="wrapper-right">
-        <div class="pad" v-bind:key="key"  v-for="key in rightPads" :data-key="key"></div>
+      <div class="pad" v-bind:key="key" v-for="key in rightPads" :data-key="key">
+        <div class="audio-slide">
+          <div :class="`audio-range range-${key}`"></div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import { Bus } from '../main.js';
+import { Bus } from "../main.js";
 
 export default {
-  name: 'Pads',
+  name: "Pads",
   data() {
     return {
       pressedKeys: [],
@@ -27,16 +49,16 @@ export default {
     };
   },
   created() {
-    window.addEventListener('keydown', this.keyDown);
-    window.addEventListener('keyup', this.keyUp);
+    window.addEventListener("keydown", this.keyDown);
+    window.addEventListener("keyup", this.keyUp);
   },
   methods: {
     keyDown(e) {
       if (this.isLoopKey(e)) {
-        console.log('Loop clicked');
+        console.log("Loop clicked");
         this.loopClick(e);
       } else if (this.isNormalKey(e)) {
-        console.log('Pad clicked');
+        console.log("Pad clicked");
         this.playAudio(e);
         this.padClick(e);
       }
@@ -51,7 +73,12 @@ export default {
       return e.keyCode >= 48 && e.keyCode <= 57;
     },
     isNormalKey(e) {
-      return this.firstline.includes(e.keyCode) || this.secondLine.includes(e.keyCode) || this.thirdLine.includes(e.keyCode) || this.rightPads.includes(e.keyCode);
+      return (
+        this.firstline.includes(e.keyCode) ||
+        this.secondLine.includes(e.keyCode) ||
+        this.thirdLine.includes(e.keyCode) ||
+        this.rightPads.includes(e.keyCode)
+      );
     },
     loopClick(e) {},
     padClick(e) {
@@ -60,7 +87,7 @@ export default {
       }
     },
     playAudio(e) {
-      Bus.$emit('playAudio', e);
+      Bus.$emit("playAudio", e);
     }
   }
 };
@@ -113,6 +140,18 @@ export default {
       border: none;
       outline: none;
       cursor: pointer;
+
+      .audio-slide {
+        width: 100%;
+        background: white;
+        height: 25px;
+      }
+      .audio-range {
+        width: 0;
+        background: red;
+        height: 25px;
+        transition: width .1s linear;
+      }
     }
   }
 

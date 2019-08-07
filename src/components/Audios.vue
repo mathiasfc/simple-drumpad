@@ -5,6 +5,8 @@
 <script>
 import { Bus } from "../main.js";
 import audios from "../samples/samples.js";
+import helper from "../helper/index";
+import { setTimeout } from "timers";
 
 export default {
   name: "Audios",
@@ -16,7 +18,8 @@ export default {
       topKeys: [69, 73, 79, 80, 81, 82, 84, 85, 87, 89],
       midKeys: [65, 68, 70, 71, 72, 74, 75, 76, 83, 186],
       // numPadKeys: [97, 98, 99, 100, 101, 102, 103, 104, 105]
-      numPadKeys: [97, 98, 99, 100]
+      numPadKeys: [97, 98, 99, 100],
+      acitiveLoops: []
     };
   },
   mounted() {
@@ -36,7 +39,6 @@ export default {
 
     Bus.$on("playAudio", keydown => {
       this.playSoundKey(keydown.keyCode);
-      console.log(this.selectedGenre);
     });
   },
   methods: {
@@ -51,8 +53,47 @@ export default {
         if (!this.loadedAllPads) {
           sound.muted = "true";
         }
-        sound.play();
+
+        if (this.isNormalKey(key)) {
+          sound.play();
+        } else if (this.isNumPadKey(key)) {
+          if (this.loadedAllPads) {
+            if (this.acitiveLoops.some(e => e.key === key)) {
+              //stop loop
+            } else {
+              //start loop
+              this.startLoop(key, sound);
+            }
+          }
+
+          //sound.play();
+        }
       }
+    },
+    startProgress(key, sound) {
+      const slider = document.getElementsByClassName(`range-${key}`)[0];
+      sound.addEventListener("timeupdate", () => {
+        const currentTime = sound.currentTime;
+        let percent = Math.min((10 / sound.duration) * currentTime * 10, 100);
+        slider.style.width = percent + "%";
+        if (percent >= 98) {
+          percent = 0;
+          slider.style.width = percent;
+          this.startLoop(key, sound);
+          sound.pause();
+          sound.currentTime = 0;
+        }
+      });
+    },
+    startLoop(key, sound) {
+      let path = this.getAudioPath(key);
+      let format = path === "numpad" ? "mp3" : "wav";
+      var audio = require(`../assets/audios/hiphop/${path}/${key}.${format}`);
+      var sound = new Audio(audio);
+
+      this.startProgress(key, sound);
+      console.log("played");
+      sound.play();
     },
     checkUserCookies() {
       //If had selected genre, set as default
