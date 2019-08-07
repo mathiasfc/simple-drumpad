@@ -58,15 +58,13 @@ export default {
           sound.play();
         } else if (this.isNumPadKey(key)) {
           if (this.loadedAllPads) {
-            if (this.acitiveLoops.some(e => e.key === key)) {
-              //stop loop
+            const activeLoop = this.acitiveLoops.filter(e => e.key === key)[0];
+            if (activeLoop) {
+              this.stopLoop(key, activeLoop.sound);
             } else {
-              //start loop
               this.startLoop(key, sound);
             }
           }
-
-          //sound.play();
         }
       }
     },
@@ -77,13 +75,23 @@ export default {
         let percent = Math.min((10 / sound.duration) * currentTime * 10, 100);
         slider.style.width = percent + "%";
         if (percent >= 98) {
+          console.log("stoped all");
           percent = 0;
-          slider.style.width = percent;
-          this.startLoop(key, sound);
           sound.pause();
           sound.currentTime = 0;
+          sound.play();
+          this.resetProgress(sound, slider);
+        }
+        const activeLoop = this.acitiveLoops.some(e => e.key === key);
+
+        if (!activeLoop) {
+          this.resetProgress(sound, slider);
+          sound.pause();
         }
       });
+    },
+    resetProgress(sound, slider) {
+      slider.style.width = 0;
     },
     startLoop(key, sound) {
       let path = this.getAudioPath(key);
@@ -91,9 +99,20 @@ export default {
       var audio = require(`../assets/audios/hiphop/${path}/${key}.${format}`);
       var sound = new Audio(audio);
 
+      this.acitiveLoops.push({
+        key,
+        sound
+      });
+
       this.startProgress(key, sound);
-      console.log("played");
       sound.play();
+    },
+    stopLoop(key, sound) {
+      sound.pause();
+      this.acitiveLoops.splice(
+        this.acitiveLoops.findIndex(e => e.key === key),
+        1
+      );
     },
     checkUserCookies() {
       //If had selected genre, set as default
