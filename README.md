@@ -4,11 +4,11 @@
 
 ![Gif](https://github.com/mathiasfc/simple-drumpad/blob/master/src/assets/animated.gif?raw=true)
 
-🎹 [drumpad](https://mathiasfc.github.io/simple-drumpad/).
+🎹 [drumpad](https://mathiasfc.github.io/simple-drumpad/)
 
 > Work in progress...
 
-> Vue 3.0.4 
+> Vue 3.0.4
 
 🎼 We're building a drumpad application to have fun and at the same time apply the knowledge acquired with the VueJS.
 
@@ -18,13 +18,13 @@
 
 ## How to Install
 
-* Clone this repo and run
+- Clone this repo and run
 
 ```
   npm install
 ```
-# How to Use
 
+# How to Use
 
 ```
   npm run serve
@@ -32,13 +32,12 @@
 
 ## TODO
 
-* Display
-* Loop recording
-* Loop sync
-* Code refactor
-* Implement new features
+- Display
+- Loop recording
+- Loop sync
+- Code refactor
+- Implement new features
 
 ## License
 
 [MIT](LICENSE.md)
-

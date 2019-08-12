@@ -43,6 +43,7 @@ body {
   position: fixed;
   background: black;
   height: 100vh;
+  width: 100vw;
 }
 
 ul {
