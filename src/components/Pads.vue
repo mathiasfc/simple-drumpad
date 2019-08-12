@@ -26,9 +26,7 @@
 
     <div class="wrapper-right">
       <div class="pad" v-bind:key="key" v-for="key in rightPads" :data-key="key">
-        <div class="audio-slide">
-          <div :class="`audio-range range-${key}`"></div>
-        </div>
+        <div :class="`audio-range range-${key}`"></div>
       </div>
     </div>
   </div>
@@ -140,17 +138,33 @@ export default {
       border: none;
       outline: none;
       cursor: pointer;
+      &:nth-child(-n + 9) {
+        background: rgba(57, 182, 255, 0.13);
+        .audio-range {
+          background: rgba(57, 182, 255, 0.53);
+          box-shadow: 0 0 20px rgba(57, 182, 255, 0.53);
+        }
+      }
 
-      .audio-slide {
-        width: 100%;
-        background: white;
-        height: 25px;
+      &:nth-child(-n + 6) {
+        background: rgba(77, 77, 255, 0.13);
+        .audio-range {
+          background: rgba(77, 77, 255, 0.53);
+          box-shadow: 0 0 20px rgba(77, 77, 255, 0.53);
+        }
+      }
+
+      &:nth-child(-n + 3) {
+        background: rgba(175, 78, 255, 0.13);
+        .audio-range {
+          background: rgba(175, 78, 255, 0.53);
+          box-shadow: 0 0 20px rgba(175, 78, 255, 0.53);
+        }
       }
       .audio-range {
         width: 0;
-        background: red;
-        height: 25px;
-        transition: width .1s linear;
+        height: 100%;
+        transition: width 0.1s linear;
       }
     }
   }
