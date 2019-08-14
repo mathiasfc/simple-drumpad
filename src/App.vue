@@ -65,7 +65,7 @@ li {
   margin: 0 auto;
   margin-top: 50px;
   background: #000000;
-  background: -webkit-linear-gradient(to right, #434343, #000000);
-  background: linear-gradient(to right, #434343, #000000);
+  background: -webkit-linear-gradient(to right, #434343, #080808);
+  background: linear-gradient(to right, #434343, #080808);
 }
 </style>

@@ -1,34 +1,53 @@
 <template>
   <div id="config-panel">
-    <span class="custom-dropdown">
-      <select @change="onSelectChange" v-model="selected">    
-        <option v-for="(opt, index) in options" :key="index">
-          {{opt}}
-        </option>
-      </select> 
-    </span>
-    <input type="button" class="btnControls" value="ⓘ Controls" id="btnControls" @click="toggleInfos" />
+    <div class="left-config-block">
+      <div class="custom-dropdown">
+        <select @change="onSelectChange" v-model="selected">
+          <option v-for="(opt, index) in options" :key="index">{{opt}}</option>
+        </select>
+      </div>
+      <div class="volume-slider">
+        <vue-slider v-model="volume" :max="1" :interval="0.1" :drag-end="this.onVolumeChange()"></vue-slider>
+      </div>
+    </div>
+
+    <input
+      type="button"
+      class="btnControls"
+      value="ⓘ Controls"
+      id="btnControls"
+      @click="toggleInfos"
+    />
   </div>
 </template>
 
 <script>
-import { Bus } from '../main.js';
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
+import { Bus } from "../main.js";
 
 export default {
-  name: 'ConfigPanel',
+  name: "ConfigPanel",
   data() {
     return {
-      selected: 'Hip Hop',
-      options: ['Hip Hop', 'Jazz']
+      selected: "Hip Hop",
+      options: ["Hip Hop", "Jazz"],
+      volume: 1
     };
   },
   methods: {
     toggleInfos() {
-      Bus.$emit('toggleInfos', true);
+      Bus.$emit("toggleInfos", true);
     },
     onSelectChange() {
-      Bus.$emit('genreChanged', this.selected);
+      Bus.$emit("genreChanged", this.selected);
+    },
+    onVolumeChange() {
+      Bus.$emit("volumeChanged", this.volume);
     }
+  },
+  components: {
+    VueSlider
   }
 };
 </script>
@@ -37,69 +56,82 @@ export default {
 
 <style lang="scss" scoped>
 #config-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 60px;
 
-  .custom-dropdown {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px;
-    margin-left: 21px;
-    margin-top: 10px;
+  .left-config-block {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      pointer-events: none;
+    .custom-dropdown {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 5px;
+      margin-left: 21px;
+      margin-top: 10px;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+      }
+
+      &:after {
+        content: "\25BC";
+        height: 1em;
+        font-size: 0.625em;
+        line-height: 1;
+        right: 1.2em;
+        top: 50%;
+        margin-top: -0.5em;
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      &:before {
+        width: 2em;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(0, 0, 0, 0.15);
+      }
+
+      select[disabled] {
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      select[disabled]::after {
+        color: rgba(0, 0, 0, 0.1);
+      }
+
+      select {
+        cursor: pointer;
+        background-color: #5f5f5f;
+        color: white;
+        font-size: 13px;
+        padding: 0.5em;
+        padding-right: 2.5em;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        text-indent: 0.01px;
+        text-overflow: "";
+        -webkit-appearance: button;
+        width: 115px;
+        height: 40px;
+      }
     }
 
-    &:after {
-      content: '\25BC';
-      height: 1em;
-      font-size: 0.625em;
-      line-height: 1;
-      right: 1.2em;
-      top: 50%;
-      margin-top: -0.5em;
-      color: rgba(0, 0, 0, 0.4);
-    }
-
-    &:before {
-      width: 2em;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      border-radius: 0 3px 3px 0;
-      background-color: rgba(0, 0, 0, 0.15);
-    }
-
-    select[disabled] {
-      color: rgba(0, 0, 0, 0.3);
-    }
-
-    select[disabled]::after {
-      color: rgba(0, 0, 0, 0.1);
-    }
-
-    select {
-      cursor: pointer;
-      background-color: #5f5f5f;
-      color: white;
-      font-size: 13px;
-      padding: 0.5em;
-      padding-right: 2.5em;
-      border: 0;
-      margin: 0;
-      border-radius: 3px;
-      text-indent: 0.01px;
-      text-overflow: '';
-      -webkit-appearance: button;
-      width: 115px;
-      height: 40px;
+    .volume-slider {
+      width: 100px;
     }
   }
-
   .btnControls {
     float: right;
     margin-right: 27px;
