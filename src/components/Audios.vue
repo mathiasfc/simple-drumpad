@@ -18,6 +18,7 @@ export default {
       volume: 1,
       topKeys: [69, 73, 79, 80, 81, 82, 84, 85, 87, 89],
       midKeys: [65, 68, 70, 71, 72, 74, 75, 76, 83, 186],
+      bottomKeys: [66, 67, 77, 78, 86, 88, 90, 188],
       // numPadKeys: [97, 98, 99, 100, 101, 102, 103, 104, 105]
       numPadKeys: [97, 98, 99, 100],
       acitiveLoops: []
@@ -124,7 +125,12 @@ export default {
       //If had selected genre, set as default
     },
     preLoadSounds() {
-      const allPads = [...this.topKeys, ...this.midKeys, ...this.numPadKeys];
+      const allPads = [
+        ...this.topKeys,
+        ...this.midKeys,
+        ...this.bottomKeys,
+        ...this.numPadKeys
+      ];
       allPads.forEach((key, index) => {
         this.playSoundKey(key);
         if (index === allPads.length - 1) {
@@ -137,6 +143,8 @@ export default {
         return "top";
       } else if (this.midKeys.includes(key)) {
         return "mid";
+      } else if (this.bottomKeys.includes(key)) {
+        return "bottom";
       } else if (this.numPadKeys.includes(key)) {
         return "numpad";
       }
