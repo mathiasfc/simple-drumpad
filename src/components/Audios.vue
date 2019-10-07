@@ -1,5 +1,8 @@
 <template>
-  <div id="audios"></div>
+  <div>
+    <div id="audios"></div>
+    <loading :active.sync="!this.loadedAllPads" :is-full-page="true" background-color="#000" color="#FFF"></loading>
+  </div>
 </template>
 
 <script>
@@ -7,6 +10,8 @@ import { Bus } from "../main.js";
 import audios from "../samples/samples.js";
 import helper from "../helper/index";
 import { setTimeout } from "timers";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "Audios",
@@ -23,6 +28,9 @@ export default {
       numPadKeys: [97, 98, 99, 100],
       acitiveLoops: []
     };
+  },
+  components: {
+    Loading
   },
   mounted() {
     this.preLoadSounds();
