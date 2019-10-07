@@ -1,7 +1,12 @@
 <template>
   <div>
     <div id="audios"></div>
-    <loading :active.sync="!this.loadedAllPads" :is-full-page="true" background-color="#000" color="#FFF"></loading>
+    <loading
+      :active.sync="!this.loadedAllPads"
+      :is-full-page="true"
+      background-color="#000"
+      color="#FFF"
+    ></loading>
   </div>
 </template>
 
@@ -26,7 +31,8 @@ export default {
       bottomKeys: [66, 67, 77, 78, 86, 88, 90, 188],
       // numPadKeys: [97, 98, 99, 100, 101, 102, 103, 104, 105]
       numPadKeys: [97, 98, 99, 100],
-      acitiveLoops: []
+      acitiveLoops: [],
+      padsLoaded: 0
     };
   },
   components: {
@@ -67,6 +73,18 @@ export default {
         //if not loaded all mute audio
         if (!this.loadedAllPads) {
           sound.muted = "true";
+          sound.addEventListener("canplay", () => {
+            const allPads = [
+              ...this.topKeys,
+              ...this.midKeys,
+              ...this.bottomKeys,
+              ...this.numPadKeys
+            ];
+            this.padsLoaded += 1;
+            if (this.padsLoaded === allPads.length - 1) {
+              this.loadedAllPads = true;
+            }
+          });
         }
 
         if (this.isNormalKey(key)) {
@@ -141,9 +159,10 @@ export default {
       ];
       allPads.forEach((key, index) => {
         this.playSoundKey(key);
-        if (index === allPads.length - 1) {
-          this.loadedAllPads = true;
-        }
+
+        // if (index === allPads.length - 1) {
+        //   this.loadedAllPads = true;
+        // }
       });
     },
     getAudioPath(key) {
