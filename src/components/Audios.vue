@@ -6,13 +6,20 @@
       :is-full-page="true"
       background-color="#000"
       color="#FFF"
-    ></loading>
+    >
+      <span class="span-loading">Loading...</span>
+    </loading>
+    <ProgressBar
+      v-if="this.loadingProgress < 96 || !this.loadedAllPads"
+      :progress="this.loadingProgress"
+    />
   </div>
 </template>
 
 <script>
 import { Bus } from "../main.js";
 import audios from "../samples/samples.js";
+import ProgressBar from "../components/ProgressBar";
 import helper from "../helper/index";
 import { setTimeout } from "timers";
 import Loading from "vue-loading-overlay";
@@ -26,6 +33,7 @@ export default {
       audioItems: audios,
       loadedAllPads: false,
       volume: 1,
+      loadingProgress: 0,
       topKeys: [69, 73, 79, 80, 81, 82, 84, 85, 87, 89],
       midKeys: [65, 68, 70, 71, 72, 74, 75, 76, 83, 186],
       bottomKeys: [66, 67, 77, 78, 86, 88, 90, 188],
@@ -36,7 +44,8 @@ export default {
     };
   },
   components: {
-    Loading
+    Loading,
+    ProgressBar
   },
   mounted() {
     this.preLoadSounds();
@@ -81,6 +90,7 @@ export default {
               ...this.numPadKeys
             ];
             this.padsLoaded += 1;
+            this.loadingProgress += 3.1;
             if (this.padsLoaded === allPads.length - 1) {
               this.loadedAllPads = true;
             }
@@ -183,5 +193,9 @@ export default {
 <style lang="scss" scoped>
 #audios {
   display: none;
+}
+
+.span-loading {
+  color: white !important;
 }
 </style>
