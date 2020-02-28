@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <div
-      class="drumpad-background"
-      :style="{
-        'background-image': `url(${require('' + wpp + '')})`
-      }"
-    ></div>
+    <Background />
     <div id="drumpad" class="gradient-border">
       <ConfigPanel />
       <Loops />
@@ -17,6 +12,7 @@
 </template>
 
 <script>
+import Background from "./components/Background.vue";
 import ConfigPanel from "./components/ConfigPanel.vue";
 import Loops from "./components/Loops.vue";
 import Pads from "./components/Pads.vue";
@@ -26,41 +22,12 @@ import Audios from "./components/Audios.vue";
 export default {
   name: "app",
   components: {
+    Background,
     ConfigPanel,
     Loops,
     Pads,
     ControlsInfo,
     Audios
-  },
-  data() {
-    return {
-      backgrounds: ["1.png", "2.png", "3.png", "4.jpg", "5.png"],
-      bgInterval: "",
-      wpp: "./assets/wallpapers/1.png"
-    };
-  },
-  mounted() {
-    this.preLoadImages();
-    this.changeBackground();
-  },
-  beforeDestroy() {
-    clearInterval(this.bgInterval);
-  },
-  methods: {
-    preLoadImages() {
-      this.backgrounds.forEach(item => {
-        let image = new Image();
-        let path = `./assets/wallpapers/${item}`;
-        image.src = require("" + path + "");
-      });
-    },
-    changeBackground() {
-      let count = 0;
-      this.bgInterval = setInterval(() => {
-        this.wpp = `./assets/wallpapers/${this.backgrounds[count]}`;
-        count = count >= 4 ? 0 : count + 1;
-      }, 15000);
-    }
   }
 };
 </script>
@@ -78,19 +45,6 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-.drumpad-background {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  display: block;
-  filter: blur(3px) grayscale(1);
-  background-size: contain;
-  transition: background-image 2s ease-in-out;
 }
 
 ul {
