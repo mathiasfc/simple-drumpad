@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <Background />
+    <div class="bg-cb">
+      <input type="checkbox" id="checkbox" v-model="disableBg" />
+      <span>Disable background</span>
+    </div>
+    <Background v-if="!disableBg" />
     <div id="drumpad" class="gradient-border">
       <ConfigPanel />
       <Loops />
@@ -28,6 +32,11 @@ export default {
     Pads,
     ControlsInfo,
     Audios
+  },
+  data() {
+    return {
+      disableBg: false
+    };
   }
 };
 </script>
@@ -45,6 +54,20 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
+}
+
+.bg-cb {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  border-radius: 10px;
+
+  input {
+    margin-right: 10px;
+  }
 }
 
 ul {
