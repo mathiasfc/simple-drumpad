@@ -6,7 +6,7 @@
         'background-image': `url(${require('' + wpp + '')})`
       }"
     ></div>
-    <div id="drumpad">
+    <div id="drumpad" class="gradient-border">
       <ConfigPanel />
       <Loops />
       <Pads />
@@ -106,5 +106,38 @@ li {
   background: #000000;
   background: -webkit-linear-gradient(to right, #434343, #080808);
   background: linear-gradient(to right, #434343, #080808);
+}
+
+.gradient-border {
+  --border-width: 3px;
+  position: relative;
+  background: #222;
+  border-radius: var(--border-width);
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      rgba(57, 182, 255, 0.5),
+      rgba(77, 77, 255, 0.5),
+      rgba(175, 78, 255, 0.5)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 5s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
 }
 </style>
