@@ -2,12 +2,11 @@
   <div id="config-panel">
     <div class="left-config-block">
       <div class="custom-dropdown">
-        <select @change="onSelectChange" v-model="selected">
-          <option v-for="(opt, index) in options" :key="index">{{opt}}</option>
+        <select @change="onSelectChange" v-model="selected" disabled>
+          <option v-for="(opt, index) in options" :key="index">{{
+            opt
+          }}</option>
         </select>
-      </div>
-      <div class="volume-slider">
-        <vue-slider v-model="volume" :max="1" :interval="0.1" :drag-end="this.onVolumeChange()"></vue-slider>
       </div>
     </div>
 
@@ -31,8 +30,7 @@ export default {
   data() {
     return {
       selected: "Hip Hop",
-      options: ["Hip Hop", "Jazz"],
-      volume: 1
+      options: ["Hip Hop", "Jazz"]
     };
   },
   methods: {
@@ -41,9 +39,6 @@ export default {
     },
     onSelectChange() {
       Bus.$emit("genreChanged", this.selected);
-    },
-    onVolumeChange() {
-      Bus.$emit("volumeChanged", this.volume);
     }
   },
   components: {
@@ -84,12 +79,14 @@ export default {
 
       &:after {
         content: "\25BC";
-        height: 1em;
+        height: 2em;
         font-size: 0.625em;
         line-height: 1;
-        right: 1.2em;
+        right: 0px;
+        width: 20px;
         top: 50%;
         margin-top: -0.5em;
+        background: #515151;
         color: rgba(0, 0, 0, 0.4);
       }
 
@@ -111,7 +108,7 @@ export default {
       }
 
       select {
-        cursor: pointer;
+        cursor: not-allowed;
         background-color: #5f5f5f;
         color: white;
         font-size: 13px;
@@ -126,10 +123,6 @@ export default {
         width: 115px;
         height: 40px;
       }
-    }
-
-    .volume-slider {
-      width: 100px;
     }
   }
   .btnControls {

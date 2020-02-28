@@ -1,30 +1,42 @@
 <template>
-<div v-if="howToUse">
-  <div class="backgroundDiv" @click="toggleInfo"></div>
-  <div class="messagepop pop">
-    <h1 style="text-align:center;">Keyboard</h1><br>
-    <span><b>0-9:</b> Record your loops <span style="color:red;"> [In progress...]</span></span><br><br>
-    <span><b>(Q-P):</b> Hat's <span style="color:red;"> [TODO]</span> </span><br><br>
-    <span><b>(A-;):</b> Clap's / Kick's</span><span style="color:red;"> [TODO]</span><br><br>
-    <span><b>(Z-?):</b> Voice's <span style="color:red;"> [TODO]</span> </span><br><br>
-    <span><b>Numpad's (0-9)</b> Effect's <span style="color:red;"> [TODO]</span> </span><br>
-    <span style="font-size:14px; float:right;">*Press [esc] to clear all loop's.</span>
+  <div v-if="howToUse">
+    <div class="backgroundDiv" @click="toggleInfo"></div>
+    <div class="messagepop pop">
+      <h1 style="text-align:center;">Keyboard</h1>
+      <br />
+      <span
+        ><b>0-9:</b> Record your loops
+        <span style="color:red;"> [In progress...]</span></span
+      ><br /><br />
+      <span><b>(Q-P):</b> Hat's <span style="color:red;"> [TODO]</span> </span
+      ><br /><br />
+      <span><b>(A-;):</b> Clap's / Kick's</span
+      ><span style="color:red;"> [TODO]</span><br /><br />
+      <span><b>(Z-?):</b> Voice's <span style="color:red;"> [TODO]</span> </span
+      ><br /><br />
+      <span
+        ><b>Numpad's (0-9)</b> Effect's
+        <span style="color:red;"> [TODO]</span> </span
+      ><br />
+      <span style="font-size:14px; float:right;"
+        >*Press [esc] to clear all loop's.</span
+      >
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import { Bus } from '../main.js';
+import { Bus } from "../main.js";
 
 export default {
-  name: 'ControlsInfo',
+  name: "ControlsInfo",
   data() {
     return {
       howToUse: false
     };
   },
   created() {
-    Bus.$on('toggleInfos', howToUse => {
+    Bus.$on("toggleInfos", howToUse => {
       this.howToUse = howToUse;
     });
   },

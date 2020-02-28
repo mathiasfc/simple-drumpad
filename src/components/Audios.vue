@@ -30,7 +30,6 @@ export default {
     return {
       selectedGenre: "hiphop",
       loadedAllPads: false,
-      volume: 1,
       loadingProgress: 0,
       topKeys: [69, 73, 79, 80, 81, 82, 84, 85, 87, 89],
       midKeys: [65, 68, 70, 71, 72, 74, 75, 76, 83, 186],
@@ -60,10 +59,6 @@ export default {
       }
     });
 
-    Bus.$on("volumeChanged", volume => {
-      this.volume = volume;
-    });
-
     Bus.$on("playAudio", keydown => {
       this.playSoundKey(keydown.keyCode);
     });
@@ -74,7 +69,6 @@ export default {
       let format = path === "numpad" ? "mp3" : "wav";
       var audio = require(`../assets/audios/hiphop/${path}/${key}.${format}`);
       var sound = new Audio(audio);
-      sound.volume = this.volume;
 
       if (sound) {
         //if not loaded all mute audio
@@ -139,7 +133,6 @@ export default {
       let format = path === "numpad" ? "mp3" : "wav";
       var audio = require(`../assets/audios/hiphop/${path}/${key}.${format}`);
       var sound = new Audio(audio);
-      sound.volume = this.volume;
       this.acitiveLoops.push({
         key,
         sound
