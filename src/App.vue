@@ -1,7 +1,12 @@
 <template>
-  <!-- <div class="drumpad-background" :style="{'background-image': `url(${require('./assets/wallpapers/nbig.jpg')})`}"> -->
-  <div class="drumpad-background">
-    <div id="drumpad" class="container">
+  <div class="container">
+    <div
+      class="drumpad-background"
+      :style="{
+        'background-image': `url(${require('' + wpp + '')})`
+      }"
+    ></div>
+    <div id="drumpad">
       <ConfigPanel />
       <Loops />
       <Pads />
@@ -17,7 +22,6 @@ import Loops from "./components/Loops.vue";
 import Pads from "./components/Pads.vue";
 import ControlsInfo from "./components/ControlsInfo.vue";
 import Audios from "./components/Audios.vue";
-import NotoriousWallpaper from "./assets/wallpapers/nbig.jpg";
 
 export default {
   name: "app",
@@ -27,6 +31,28 @@ export default {
     Pads,
     ControlsInfo,
     Audios
+  },
+  data() {
+    return {
+      backgrounds: ["1.png", "2.png", "3.png", "4.jpg", "5.png"],
+      bgInterval: "",
+      wpp: "./assets/wallpapers/1.png"
+    };
+  },
+  mounted() {
+    this.changeBackground();
+  },
+  beforeDestroy() {
+    clearInterval(this.bgInterval);
+  },
+  methods: {
+    changeBackground() {
+      let count = 0;
+      this.bgInterval = setInterval(() => {
+        this.wpp = `./assets/wallpapers/${this.backgrounds[count]}`;
+        count = count >= 4 ? 0 : count + 1;
+      }, 15000);
+    }
   }
 };
 </script>
@@ -39,11 +65,24 @@ body {
   margin: 0;
 }
 
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
 .drumpad-background {
-  position: fixed;
-  background: black;
   height: 100vh;
   width: 100vw;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  filter: blur(3px) grayscale(1);
+  background-size: contain;
+  transition: background-image 2s ease-in-out;
 }
 
 ul {
@@ -55,7 +94,7 @@ li {
   display: inline-block;
 }
 
-.container {
+#drumpad {
   width: 95%;
   min-width: 700px;
   max-width: 1500px;
