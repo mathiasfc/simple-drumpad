@@ -40,12 +40,19 @@ export default {
     };
   },
   mounted() {
+    this.preLoadImages();
     this.changeBackground();
   },
   beforeDestroy() {
     clearInterval(this.bgInterval);
   },
   methods: {
+    preLoadImages() {
+      this.backgrounds.forEach(item => {
+        let image = new Image();
+        image.src = `./assets/wallpapers/${item}`;
+      });
+    },
     changeBackground() {
       let count = 0;
       this.bgInterval = setInterval(() => {
