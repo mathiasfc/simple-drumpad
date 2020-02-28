@@ -18,7 +18,6 @@
 
 <script>
 import { Bus } from "../main.js";
-import audios from "../samples/samples.js";
 import ProgressBar from "../components/ProgressBar";
 import helper from "../helper/index";
 import { setTimeout } from "timers";
@@ -30,7 +29,6 @@ export default {
   data() {
     return {
       selectedGenre: "hiphop",
-      audioItems: audios,
       loadedAllPads: false,
       volume: 1,
       loadingProgress: 0,
