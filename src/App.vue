@@ -50,7 +50,8 @@ export default {
     preLoadImages() {
       this.backgrounds.forEach(item => {
         let image = new Image();
-        image.src = `./media/${item}`;
+        let path = `./assets/wallpapers/${item}`;
+        image.src = require("" + path + "");
       });
     },
     changeBackground() {
